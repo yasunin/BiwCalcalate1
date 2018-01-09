@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import yasunin.krirk.ac.th.biwcalcalate.MainActivity;
 import yasunin.krirk.ac.th.biwcalcalate.R;
@@ -24,9 +26,42 @@ public class MainFragment extends Fragment{
 
 //        Create Toolbar
         createToolbar();
+//        Showname calculate
+        shownameCalculate();
+//        calcuiate controller
+        calcuiateController();
 
 
     }   //main method
+
+    private void calcuiateController() {
+        Button button = getView().findViewById(R.id.btnShowname);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction().replace(R.id.contentMainFragment,new CalculateFragment())
+                        .addToBackStack(null)
+                        .commit();
+
+            }
+        });
+    }
+
+    private void shownameCalculate() {
+        Button button = getView().findViewById(R.id.btnShowname);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TextView textView = getView().findViewById(R.id.btnShowname);
+                  textView.setText("Yasunin");
+
+
+            }
+        });
+
+    }
 
     private void createToolbar() {
         Toolbar toolbar = getView().findViewById(R.id.ToolbarMain);
