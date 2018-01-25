@@ -29,7 +29,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
     private String DisplayString = " ";
     private double num1ADouble = 0, displayADouble;
     private String tag = "23JanV1";
-    private boolean addABoolean = false, minusBoolean = false;
+    private boolean addABoolean = false, minusBoolean = false, divideBoolean = false, mutiplatBoolean = false;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -223,6 +223,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
                 Log.d(tag, "displayADouble ==> " + displayADouble);
                 Log.d(tag, "addABoolean ==> " + addABoolean);
 
+
                 if (addABoolean) {
                     num1ADouble = num1ADouble + displayADouble;
                     addABoolean = false;
@@ -230,6 +231,11 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
                 }else  if (minusBoolean){
                     num1ADouble = num1ADouble - displayADouble;
                     minusBoolean = false;
+                }else  if (divideBoolean){
+                    num1ADouble = num1ADouble / displayADouble;
+                    divideBoolean = false;
+                }else  if (mutiplatBoolean){
+                    num1ADouble = num1ADouble * displayADouble;
                 }
                 Log.d(tag, "num1ADouble after if ==> " + num1ADouble);
 
@@ -254,6 +260,29 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
                     }
                 }
                 Log.d(tag, "num1 at btnMinus ==> " + num1ADouble);
+                clearDisplay();
+                break;
+
+            case R.id.btnDivide:
+                divideBoolean = true;
+
+                if (num1ADouble == 0) {
+                    displayADouble = Double.parseDouble(DisplayString);
+                } else {
+                    num1ADouble = num1ADouble / Double.parseDouble(DisplayString);
+                }
+                Log.d(tag, "num1 at btnDivide ==> " + num1ADouble);
+                clearDisplay();
+                break;
+
+            case R.id.btnMultiply:
+                mutiplatBoolean = true;
+                if (num1ADouble == 0){
+                    displayADouble = Double.parseDouble(DisplayString);
+                }else {
+                    num1ADouble = num1ADouble * Double.parseDouble(DisplayString);
+                }
+                Log.d(tag, "num1 at btnMultipiy ==> " + num1ADouble);
                 clearDisplay();
                 break;
 
