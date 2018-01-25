@@ -228,13 +228,13 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
                     num1ADouble = num1ADouble + displayADouble;
                     addABoolean = false;
 
-                }else  if (minusBoolean){
+                } else if (minusBoolean) {
                     num1ADouble = num1ADouble - displayADouble;
                     minusBoolean = false;
-                }else  if (divideBoolean){
+                } else if (divideBoolean) {
                     num1ADouble = num1ADouble / displayADouble;
                     divideBoolean = false;
-                }else  if (mutiplatBoolean){
+                } else if (mutiplatBoolean) {
                     num1ADouble = num1ADouble * displayADouble;
                 }
                 Log.d(tag, "num1ADouble after if ==> " + num1ADouble);
@@ -277,9 +277,9 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
 
             case R.id.btnMultiply:
                 mutiplatBoolean = true;
-                if (num1ADouble == 0){
+                if (num1ADouble == 0) {
                     displayADouble = Double.parseDouble(DisplayString);
-                }else {
+                } else {
                     num1ADouble = num1ADouble * Double.parseDouble(DisplayString);
                 }
                 Log.d(tag, "num1 at btnMultipiy ==> " + num1ADouble);
@@ -293,19 +293,28 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
 
     private void clearDisplay() {
 
-        if (addABoolean){
+        if (addABoolean) {
 
             textView.setText("");
             DisplayString = "";
             displayADouble = 0;
 
-        }else if (minusBoolean){
+        } else if (minusBoolean) {
 
             textView.setText("");
             DisplayString = "";
             displayADouble = 0;
+        }else if (divideBoolean) {
 
-        }else {
+                textView.setText("");
+                DisplayString = "";
+                displayADouble = 0;
+        }else if (mutiplatBoolean) {
+
+            textView.setText("");
+            DisplayString = "";
+            displayADouble = 0;
+        } else {
             textView.setText("");
             DisplayString = "";
             displayADouble = 0;
